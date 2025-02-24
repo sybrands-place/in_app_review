@@ -35,16 +35,22 @@ class InAppReview {
   ///
   /// [appStoreId] is required for iOS & MacOS.
   ///
+  /// [playStoreId] is optional for Android.
+  ///
   /// [microsoftStoreId] is required for Windows.
   Future<void> openStoreListing({
     /// Required for iOS & MacOS.
     String? appStoreId,
+
+    /// Optional for Android
+    String? playStoreId,
 
     /// Required for Windows.
     String? microsoftStoreId,
   }) =>
       InAppReviewPlatform.instance.openStoreListing(
         appStoreId: appStoreId,
+        playStoreId: playStoreId,
         microsoftStoreId: microsoftStoreId,
       );
 }

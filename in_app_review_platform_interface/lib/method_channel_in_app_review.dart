@@ -32,6 +32,7 @@ class MethodChannelInAppReview extends InAppReviewPlatform {
   @override
   Future<void> openStoreListing({
     String? appStoreId,
+    String? playStoreId,
     String? microsoftStoreId,
   }) async {
     final bool isiOS = _platform.isIOS;
@@ -45,7 +46,8 @@ class MethodChannelInAppReview extends InAppReviewPlatform {
         ArgumentError.checkNotNull(appStoreId, 'appStoreId'),
       );
     } else if (isAndroid) {
-      await _channel.invokeMethod('openStoreListing');
+      await _channel
+          .invokeMethod('openStoreListing', {'playStoreId': playStoreId});
     } else if (isWindows) {
       ArgumentError.checkNotNull(microsoftStoreId, 'microsoftStoreId');
       await _launchUrl(

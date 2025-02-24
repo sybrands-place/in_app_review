@@ -54,6 +54,8 @@ inAppReview.openStoreListing(appStoreId: '...', microsoftStoreId: '...');
 
 `appStoreId` is only required on iOS and MacOS and can be found in App Store Connect under General > App Information > Apple ID.
 
+`playStoreId` is optional, if you want to open specific app page fill it with app package id.
+
 `microsoftStoreId` is only required on Windows.
 
 # Guidelines
