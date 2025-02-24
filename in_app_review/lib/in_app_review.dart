@@ -42,15 +42,19 @@ class InAppReview {
     /// Required for iOS & MacOS.
     String? appStoreId,
 
-    /// Optional for Android
+    /// Optional for Android.
     String? playStoreId,
 
     /// Required for Windows.
     String? microsoftStoreId,
+
+    /// Optional for iOS & MacOS.
+    bool useAppStoreWriteReviewAction = true,
   }) =>
       InAppReviewPlatform.instance.openStoreListing(
         appStoreId: appStoreId,
         playStoreId: playStoreId,
         microsoftStoreId: microsoftStoreId,
+        useAppStoreWriteReviewAction: useAppStoreWriteReviewAction,
       );
 }

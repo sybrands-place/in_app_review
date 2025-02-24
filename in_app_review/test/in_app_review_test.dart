@@ -98,6 +98,7 @@ class MockInAppReviewPlatform extends Mock
     String? appStoreId,
     String? playStoreId,
     String? microsoftStoreId,
+    bool useAppStoreWriteReviewAction = true,
   }) =>
       super.noSuchMethod(
         Invocation.method(
@@ -106,7 +107,8 @@ class MockInAppReviewPlatform extends Mock
           {
             #appStoreId: appStoreId,
             #microsoftStoreId: microsoftStoreId,
-            #playStoreId: playStoreId
+            #playStoreId: playStoreId,
+            #useAppStoreWriteReviewAction: useAppStoreWriteReviewAction,
           },
         ),
         returnValue: Future<void>.value(),

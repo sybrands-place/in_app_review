@@ -11,14 +11,14 @@ public class InAppReviewPlugin: NSObject, FlutterPlugin {
     
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         log("handle", details: call.method)
-        
+        let args = call.arguments as? Dictionary<String, Any>
         switch call.method {
         case "requestReview":
             requestReview(result)
         case "isAvailable":
             isAvailable(result)
         case "openStoreListing":
-            openStoreListing(storeId: call.arguments as? String, result: result)
+            openStoreListing(storeId: args["appStoreId"] as? String, result: result)
         default:
             log("method not implemented")
             result(FlutterMethodNotImplemented)
@@ -62,7 +62,7 @@ public class InAppReviewPlugin: NSObject, FlutterPlugin {
         }
     }
     
-    private func openStoreListing(storeId: String?, result: @escaping FlutterResult) {
+    private func openStoreListing(storeId: String?, useAppStoreWriteReviewAction: Bool, result: @escaping FlutterResult) {
         guard let storeId = storeId else {
             result(FlutterError(code: "no-store-id",
                               message: "Your store id must be passed as the method channel's argument",
@@ -70,7 +70,7 @@ public class InAppReviewPlugin: NSObject, FlutterPlugin {
             return
         }
         
-        let urlString = "https://apps.apple.com/app/id\(storeId)?action=write-review"
+        let urlString = "https://apps.apple.com/app/id\(storeId)\(useAppStoreWriteReviewAction ? "?action=write-review" : "")"
         guard let url = URL(string: urlString) else {
             result(FlutterError(code: "url-construct-fail",
                               message: "Failed to construct url",
