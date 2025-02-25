@@ -69,7 +69,7 @@ public class InAppReviewPlugin implements FlutterPlugin, MethodCallHandler, Acti
                 requestReview(result);
                 break;
             case "openStoreListing":
-                openStoreListing(result, call.arguments["playStoreId"]);
+                openStoreListing(result, call.arguments.get("playStoreId"));
                 break;
             default:
                 result.notImplemented();
