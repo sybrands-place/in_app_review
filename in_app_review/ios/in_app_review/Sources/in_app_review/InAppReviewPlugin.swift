@@ -18,7 +18,7 @@ public class InAppReviewPlugin: NSObject, FlutterPlugin {
         case "isAvailable":
             isAvailable(result)
         case "openStoreListing":
-            openStoreListing(storeId: args["appStoreId"] as? String, result: result)
+            openStoreListing(storeId: args["appStoreId"] as? String, useAppStoreWriteReviewAction: args["useAppStoreWriteReviewAction"] as? Bool ?? true,  result: result)
         default:
             log("method not implemented")
             result(FlutterMethodNotImplemented)
