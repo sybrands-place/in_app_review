@@ -11,7 +11,7 @@ public class InAppReviewPlugin: NSObject, FlutterPlugin {
     
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         log("handle", details: call.method)
-        let args = call.arguments as? Dictionary<String, Any>
+        let args = call.arguments as? Dictionary<String, Any> ?? [String: Any]()
         switch call.method {
         case "requestReview":
             requestReview(result)
