@@ -131,7 +131,7 @@ class InAppReviewPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         Log.i(TAG, "openStoreListing: called")
         if (noContextOrActivity(result)) return
         try {
-            val packageName = overridePackageName ?? context!!.packageName
+            val packageName = overridePackageName ?: context!!.packageName
             val intent = Intent(Intent.ACTION_VIEW)
                 .setData("https://play.google.com/store/apps/details?id=$packageName".toUri())
             activity!!.startActivity(intent)
