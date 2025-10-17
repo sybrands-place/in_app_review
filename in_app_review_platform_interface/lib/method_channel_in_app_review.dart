@@ -32,7 +32,9 @@ class MethodChannelInAppReview extends InAppReviewPlatform {
   @override
   Future<void> openStoreListing({
     String? appStoreId,
+    String? playStoreId,
     String? microsoftStoreId,
+    bool useAppStoreWriteReviewAction = true,
   }) async {
     final bool isiOS = _platform.isIOS;
     final bool isMacOS = _platform.isMacOS;
@@ -42,10 +44,14 @@ class MethodChannelInAppReview extends InAppReviewPlatform {
     if (isiOS || isMacOS) {
       await _channel.invokeMethod(
         'openStoreListing',
-        ArgumentError.checkNotNull(appStoreId, 'appStoreId'),
+        {
+          'useAppStoreWriteReviewAction': useAppStoreWriteReviewAction,
+          'appStoreId': ArgumentError.checkNotNull(appStoreId, 'appStoreId'),
+        },
       );
     } else if (isAndroid) {
-      await _channel.invokeMethod('openStoreListing');
+      await _channel
+          .invokeMethod('openStoreListing', {'playStoreId': playStoreId});
     } else if (isWindows) {
       ArgumentError.checkNotNull(microsoftStoreId, 'microsoftStoreId');
       await _launchUrl(

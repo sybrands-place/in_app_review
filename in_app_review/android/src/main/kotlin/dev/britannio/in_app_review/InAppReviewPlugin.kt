@@ -42,7 +42,7 @@ class InAppReviewPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         when (call.method) {
             "isAvailable" -> isAvailable(result)
             "requestReview" -> requestReview(result)
-            "openStoreListing" -> openStoreListing(result)
+            "openStoreListing" -> openStoreListing(result, call.argument("playStoreId"))
             else -> result.notImplemented()
         }
     }
@@ -127,11 +127,11 @@ class InAppReviewPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         }
     }
 
-    private fun openStoreListing(result: Result) {
+    private fun openStoreListing(result: Result, overridePackageName: String?) {
         Log.i(TAG, "openStoreListing: called")
         if (noContextOrActivity(result)) return
         try {
-            val packageName = context!!.packageName
+            val packageName = overridePackageName ?? context!!.packageName
             val intent = Intent(Intent.ACTION_VIEW)
                 .setData("https://play.google.com/store/apps/details?id=$packageName".toUri())
             activity!!.startActivity(intent)

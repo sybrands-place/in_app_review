@@ -58,13 +58,23 @@ abstract class InAppReviewPlatform extends PlatformInterface {
   ///
   /// [appStoreId] is required for iOS & MacOS.
   ///
+  /// [playStoreId] is optional for Android.
+  ///
   /// [microsoftStoreId] is required for Windows.
+  ///
+  /// [useAppStoreWriteReviewAction] is optional for iOS & MacOS.
   Future<void> openStoreListing({
     /// Required for iOS & MacOS.
     String? appStoreId,
 
+    /// Optional for Android.
+    String? playStoreId,
+
     /// Required for Windows.
     String? microsoftStoreId,
+
+    /// Optional for iOS & MacOS.
+    bool useAppStoreWriteReviewAction = true,
   }) {
     throw UnimplementedError('openStoreListing() has not been implemented.');
   }

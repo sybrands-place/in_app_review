@@ -96,13 +96,20 @@ class MockInAppReviewPlatform extends Mock
   @override
   Future<void> openStoreListing({
     String? appStoreId,
+    String? playStoreId,
     String? microsoftStoreId,
+    bool useAppStoreWriteReviewAction = true,
   }) =>
       super.noSuchMethod(
         Invocation.method(
           #openStoreListing,
           null,
-          {#appStoreId: appStoreId, #microsoftStoreId: microsoftStoreId},
+          {
+            #appStoreId: appStoreId,
+            #microsoftStoreId: microsoftStoreId,
+            #playStoreId: playStoreId,
+            #useAppStoreWriteReviewAction: useAppStoreWriteReviewAction,
+          },
         ),
         returnValue: Future<void>.value(),
       );

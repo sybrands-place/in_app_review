@@ -50,12 +50,18 @@ import 'package:in_app_review/in_app_review.dart';
 
 final InAppReview inAppReview = InAppReview.instance;
 
-inAppReview.openStoreListing(appStoreId: '...', microsoftStoreId: '...');
+inAppReview.openStoreListing(appStoreId: '...', microsoftStoreId: '...', playStoreId: '...', useAppStoreWriteReviewAction: '...');
+
 ```
 
 `appStoreId` is only required on iOS and MacOS and can be found in App Store Connect under General > App Information > Apple ID.
 
+`playStoreId` is optional, if you want to open specific app page fill it with app package id.
+
 `microsoftStoreId` is only required on Windows.
+
+`useAppStoreWriteReviewAction` is optional on iOS and MacOS. (default: true)
+
 
 # Guidelines
 <https://developer.apple.com/design/human-interface-guidelines/ios/system-capabilities/ratings-and-reviews/>
