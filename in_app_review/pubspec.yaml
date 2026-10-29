@@ -12,7 +12,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  in_app_review_platform_interface: ^2.0.5
+  in_app_review_platform_interface: #^2.0.6
+    path: ../in_app_review_platform_interface/
 
 dev_dependencies:
   flutter_test:
